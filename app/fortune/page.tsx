@@ -1,10 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const zodiacs = [
-  "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
-  "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces",
+  "Aries",
+  "Taurus",
+  "Gemini",
+  "Cancer",
+  "Leo",
+  "Virgo",
+  "Libra",
+  "Scorpio",
+  "Sagittarius",
+  "Capricorn",
+  "Aquarius",
+  "Pisces",
 ];
 
 export default function FortunePage() {
@@ -17,26 +28,26 @@ export default function FortunePage() {
   async function generateFortune() {
     const today = new Date().toISOString().slice(0, 10);
     const usageKey = `lumi-usage-${today}`;
-  
+
     const isLocalhost =
       window.location.hostname === "localhost" ||
       window.location.hostname === "127.0.0.1";
-  
+
     if (!isLocalhost) {
       const currentUsage = Number(localStorage.getItem(usageKey) || "0");
-  
+
       if (currentUsage >= 3) {
         setResult(
           "Lumi has already read your stars 3 times today. Please come back tomorrow. ✨"
         );
         return;
       }
-  
+
       localStorage.setItem(usageKey, String(currentUsage + 1));
     }
-  
+
     setResult("Lumi is reading the stars...");
-  
+
     const response = await fetch("/api/fortune", {
       method: "POST",
       headers: {
@@ -49,23 +60,34 @@ export default function FortunePage() {
         focus,
       }),
     });
-  
+
     const data = await response.json();
-  
+
     setResult(data.result);
   }
 
   return (
     <main className="min-h-screen bg-[#070617] px-6 py-10 text-white">
       <div className="mx-auto max-w-2xl">
-        <a href="/" className="text-sm text-purple-200">← Back home</a>
+        <a href="/" className="text-sm text-purple-200">
+          ← Back home
+        </a>
 
         <div className="mt-10 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur">
-          <div className="mb-6 text-center">
-            <div className="mx-auto mb-4 flex h-28 w-28 items-center justify-center rounded-full bg-white/10 text-6xl">
-              🐱
+          <div className="mb-8 text-center">
+            <div className="mb-6 flex justify-center">
+              <Image
+                src="/lumi2.png"
+                alt="Lumi Fortune mascot"
+                width={240}
+                height={240}
+                loading="eager"
+                className="rounded-full border border-purple-400/30 shadow-[0_0_45px_rgba(168,85,247,0.35)]"
+              />
             </div>
+
             <h1 className="text-4xl font-bold">Your Daily Fortune</h1>
+
             <p className="mt-3 text-white/60">
               Let Lumi read today&apos;s energy for you.
             </p>

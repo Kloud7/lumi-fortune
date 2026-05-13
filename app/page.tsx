@@ -5,8 +5,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#6d5dfc55,transparent_35%),radial-gradient(circle_at_bottom,#ff7bd555,transparent_35%)]" />
 
         <div className="relative z-10 max-w-3xl">
-          <div className="mx-auto mb-8 flex h-36 w-36 items-center justify-center rounded-full bg-white/10 shadow-2xl backdrop-blur">
-            <div className="text-7xl animate-bounce">🐱</div>
+          <div className="mx-auto mb-8 flex h-52 w-52 items-center justify-center rounded-full bg-white/10 shadow-2xl backdrop-blur">
+            <img
+              src="/lumi.png"
+              alt="Lumi Fortune mascot"
+              className="h-48 w-48 rounded-full object-cover"
+            />
           </div>
 
           <p className="mb-4 text-sm uppercase tracking-[0.35em] text-purple-200">
@@ -22,7 +26,10 @@ export default function Home() {
             reading for love, luck, money, and mood every day.
           </p>
 
-          <a href="/fortune" className="inline-block rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#070617] shadow-lg transition hover:scale-105">
+          <a
+            href="/fortune"
+            className="inline-block rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#070617] shadow-lg transition hover:scale-105"
+          >
             Start today&apos;s reading
           </a>
 
