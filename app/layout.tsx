@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Lumi Fortune - AI Daily Fortune Companion",
   description: "Meet Lumi, your AI spirit companion for daily fortune, love, money, mood, and zodiac readings.",
+  verification: {
+    google: "yTszQiJhm7zH7m8RGyNO0xcvHdy1eSYljSmfC9aC7d8",
+  },
 };
 
 export default function RootLayout({
